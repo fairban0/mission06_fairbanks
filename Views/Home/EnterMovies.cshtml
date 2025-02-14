@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "EnterMovies";
+}
+
+@model mission06_fairbanks.Models.Movie
+
+<h1>Enter Movie into Database</h1>
+
+<!-- Success message -->
+@if (ViewData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="EnterMovies" method="post">
+    <!--CATEGORY-->
+    <label asp-for="Category">Category:</label>
+    <select asp-for="Category" class="form-control" required>
+        <option value="action/adventure">Action/Adventure</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="family">Family</option>
+        <option value="horror/suspense">Horror/Suspense</option>
+        <option value="miscellaneous">Miscellaneous</option>
+        <option value="television">Television</option>
+        <option value="vhs">VHS</option>
+    </select>
+    <span asp-validation-for="Category" class="text-danger"></span>
+    <br />
+
+    <!--TITLE-->
+    <label asp-for="Title">Title:</label>
+    <input asp-for="Title" class="form-control" maxlength="200" required />
+    <span asp-validation-for="Title" class="text-danger"></span>
+
+    <!--YEAR-->
+    <label asp-for="Year">Year:</label>
+    <input asp-for="Year" type="number" class="form-control" required min="1800" max="2100" />
+    <span asp-validation-for="Year" class="text-danger"></span>
+
+    <!--DIRECTOR-->
+    <label asp-for="Director">Director:</label>
+    <input asp-for="Director" class="form-control" maxlength="100" required />
+    <span asp-validation-for="Director" class="text-danger"></span>
+
+    <!--RATING-->
+    <label asp-for="Rating">Rating:</label>
+    <select asp-for="Rating" class="form-control" required>
+        <option value="nr">NR</option>
+        <option value="g">G</option>
+        <option value="pg">PG</option>
+        <option value="pg-13">PG-13</option>
+        <option value="r">R</option>
+    </select>
+    <span asp-validation-for="Rating" class="text-danger"></span>
+    <br />
+
+    <!--EDITED (Optional)-->
+    <label asp-for="Edited">Edited (optional):</label>
+    <div>
+        <input type="radio" asp-for="Edited" value="true" id="edited-yes">
+        <label for="edited-yes">Yes</label>
+
+        <input type="radio" asp-for="Edited" value="false" id="edited-no">
+        <label for="edited-no">No</label>
+    </div>
+    <span asp-validation-for="Edited" class="text-danger"></span>
+    <br />
+
+    <!--LENT (Optional)-->
+    <label asp-for="Lent">Lent (optional):</label>
+    <div>
+        <input type="radio" asp-for="Lent" value="true" id="lent-yes">
+        <label for="lent-yes">Yes</label>
+
+        <input type="radio" asp-for="Lent" value="false" id="lent-no">
+        <label for="lent-no">No</label>
+    </div>
+    <span asp-validation-for="Lent" class="text-danger"></span>
+    <br />
+
+    <!--NOTES (Optional, max 25 chars)-->
+    <label asp-for="Notes">Notes (optional):</label>
+    <input asp-for="Notes" class="form-control" maxlength="25" />
+    <span asp-validation-for="Notes" class="text-danger"></span>
+
+    <br />
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
