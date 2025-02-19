@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace mission06_fairbanks.Models
+namespace mission07_fairbanks.Models
 {
     public class ErrorViewModel
     {

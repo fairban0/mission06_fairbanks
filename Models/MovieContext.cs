@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace mission06_fairbanks.Models
+namespace mission07_fairbanks.Models
 {
     public class MovieContext : DbContext
     {

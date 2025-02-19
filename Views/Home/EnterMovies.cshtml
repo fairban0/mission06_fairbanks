@@ -3,7 +3,7 @@
     ViewData["Title"] = "EnterMovies";
 }
 
-@model mission06_fairbanks.Models.Movie
+@model mission07_fairbanks.Models.Movie
 
 <h1>Enter Movie into Database</h1>
 
@@ -71,15 +71,24 @@
     <br />
 
     <!--LENT (Optional)-->
-    <label asp-for="Lent">Lent (optional):</label>
+    <label asp-for="LentTo">Lent (optional):</label>
     <div>
-        <input type="radio" asp-for="Lent" value="true" id="lent-yes">
+        <input type="radio" asp-for="LentTo" value="true" id="lent-yes">
         <label for="lent-yes">Yes</label>
 
-        <input type="radio" asp-for="Lent" value="false" id="lent-no">
+        <input type="radio" asp-for="LentTo" value="false" id="lent-no">
         <label for="lent-no">No</label>
     </div>
-    <span asp-validation-for="Lent" class="text-danger"></span>
+    <span asp-validation-for="LentTo" class="text-danger"></span>
+    <br />
+
+    <!--RATING-->
+    <label asp-for="CopiedToPlex">Copied To Plex:</label>
+    <select asp-for="CopiedToPlex" class="form-control" required>
+        <option value="false">Yes</option>
+        <option value="true">No</option>
+    </select>
+    <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
     <br />
 
     <!--NOTES (Optional, max 25 chars)-->

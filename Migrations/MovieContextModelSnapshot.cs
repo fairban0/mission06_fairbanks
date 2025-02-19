@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using mission06_fairbanks.Models;
+using mission07_fairbanks.Models;
 
 #nullable disable
 
-namespace mission06_fairbanks.Migrations
+namespace mission07_fairbanks.Migrations
 {
     [DbContext(typeof(MovieContext))]
     partial class MovieContextModelSnapshot : ModelSnapshot

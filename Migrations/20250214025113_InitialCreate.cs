@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace mission06_fairbanks.Migrations
+namespace mission07_fairbanks.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -21,8 +21,8 @@ namespace mission06_fairbanks.Migrations
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
                     Director = table.Column<string>(type: "TEXT", nullable: false),
                     Rating = table.Column<string>(type: "TEXT", nullable: false),
-                    Edited = table.Column<bool>(type: "INTEGER", nullable: true),
-                    Lent = table.Column<bool>(type: "INTEGER", nullable: true),
+                    Edited = table.Column<bool>(type: "INTEGER", nullable: true),  // Change to int if needed
+                    Lent = table.Column<bool>(type: "INTEGER", nullable: true),    // Change to int if needed
                     Notes = table.Column<string>(type: "TEXT", maxLength: 25, nullable: true)
                 },
                 constraints: table =>
@@ -39,3 +39,4 @@ namespace mission06_fairbanks.Migrations
         }
     }
 }
+

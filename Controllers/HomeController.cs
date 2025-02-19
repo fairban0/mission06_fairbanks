@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using mission06_fairbanks.Models;
+using Microsoft.EntityFrameworkCore;
+using mission07_fairbanks.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace mission06_fairbanks.Controllers
+namespace mission07_fairbanks.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MovieContext _context;
+        private MovieContext _context;
 
         public HomeController(MovieContext context)
         {
@@ -28,6 +31,12 @@ namespace mission06_fairbanks.Controllers
             return View();
         }
 
+
+        public IActionResult GetToKnowJoel()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult EnterMovies(Movie movie)
         {
@@ -43,6 +52,15 @@ namespace mission06_fairbanks.Controllers
             }
 
             return View(movie);
+        }
+
+        public async Task<IActionResult> ViewMovies()
+        {
+            var movies = await _context.Movies
+                .Include(m => m.Category) // Include Category so we can access CategoryName
+                .ToListAsync();
+
+            return View(movies);
         }
 
     }

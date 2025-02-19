@@ -1,4 +1,4 @@
-using mission06_fairbanks.Models;
+using mission07_fairbanks.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
