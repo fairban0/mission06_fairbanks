@@ -6,11 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Load the SQLite connection string from appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Register SQLite Database Context
-builder.Services.AddDbContext<MovieContext>(options =>
-    options.UseSqlite(connectionString));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MovieContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
 
 var app = builder.Build();
 

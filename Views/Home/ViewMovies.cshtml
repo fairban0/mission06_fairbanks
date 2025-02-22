@@ -10,34 +10,41 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <td>Category</td>
-            <td>Title</td>
-            <td>Year</td>
-            <td>Director</td>
-            <td>Rating</td>
-            <td>Edited</td>
-            <td>Lent To</td>
-            <td>Copied to Plex</td>
-            <td>Notes</td>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Copied to Plex</th>
+            <th>Notes</th>
         </tr>
     </thead>
-
-    @foreach (var x in Model)
-    {
-        <tbody>
+    <tbody>
+        @foreach (var movie in Model)
+        {
             <tr>
-                <td>@x.Category?.CategoryName</td> <!-- This ensures it shows the category name -->
-                <td>@x.Title</td>
-                <td>@x.Year</td>
-                <td>@x.Director</td>
-                <td>@x.Edited</td>
-                <td>@x.LentTo</td>
-                <td>@x.CopiedToPlex</td>
-                <td>@x.Notes</td>
-
-                <td><a>Edit</a></td>
-                <td><a>Delete</a></td>
+                <td>@movie.Category?.CategoryName</td>  <!-- Display CategoryName from navigation property -->
+                <td>@movie.Title</td>
+                <td>@movie.Year</td>
+                <td>@movie.Director</td>
+                <td>@movie.Rating</td>
+                <td>@movie.Edited</td>
+                <td>@movie.LentTo</td>
+                <td>@movie.CopiedToPlex</td>
+                <td>@movie.Notes</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", "Home", new { id = movie.MovieId })">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "Home", new { id = movie.MovieId })">Delete</a>
+                </td>
             </tr>
-        </tbody>
-    }
+        }
+    </tbody>
+
+
 </table>
+
+

@@ -1,0 +1,96 @@
+﻿@model mission07_fairbanks.Models.Movie
+
+<h2>Edit Movie</h2>
+
+<form method="post">
+    <!-- Hidden MovieId Field -->
+    <input type="hidden" asp-for="MovieId" />
+
+    <!-- CATEGORY Dropdown -->
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control" required>
+            <option value="">Select Category</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.CategoryId" selected="@(category.CategoryId == Model.CategoryId ? "selected" : null)">
+                    @category.CategoryName
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <!-- TITLE -->
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" maxlength="200" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <!-- YEAR -->
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" type="number" class="form-control" required min="1888" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <!-- DIRECTOR -->
+    <div class="form-group">
+        <label asp-for="Director">Director</label>
+        <input asp-for="Director" class="form-control" maxlength="100" />
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+
+    <!-- RATING -->
+    <div class="form-group">
+        <label asp-for="Rating">Rating</label>
+        <select asp-for="Rating" class="form-control" asp-items="@(ViewBag.RatingList as SelectList)">
+            <option value="">Select Rating</option>
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+
+    <!-- EDITED -->
+    <div class="form-group">
+        <label asp-for="Edited">Edited</label>
+        <select asp-for="Edited" class="form-control" asp-items="@(ViewBag.EditedList as List<SelectListItem>)">
+            <option value="">Select</option>
+        </select>
+        <span asp-validation-for="Edited" class="text-danger"></span>
+    </div>
+
+
+    <!-- LENT TO -->
+    <div class="form-group">
+        <label asp-for="LentTo">Lent To</label>
+        <select asp-for="LentTo" class="form-control" asp-items="@(ViewBag.LentToList as List<SelectListItem>)">
+            <option value="">Select</option>
+        </select>
+        <span asp-validation-for="LentTo" class="text-danger"></span>
+    </div>
+
+
+    <!-- COPIED TO PLEX -->
+    <div class="form-group">
+        <label asp-for="CopiedToPlex">Copied to Plex</label>
+        <select asp-for="CopiedToPlex" class="form-control" asp-items="@(ViewBag.CopiedToPlexList as List<SelectListItem>)" required>
+            <option value="">Select</option>
+        </select>
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+    </div>
+
+    <!-- NOTES -->
+    <div class="form-group">
+        <label asp-for="Notes">Notes</label>
+        <textarea asp-for="Notes" class="form-control" maxlength="25">@Model.Notes</textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+
+    <br />
+    <!-- BUTTONS -->
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a class="btn btn-secondary" href="@Url.Action("ViewMovies", "Home")">Cancel</a>
+</form>
